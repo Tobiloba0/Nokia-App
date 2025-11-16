@@ -3,8 +3,67 @@ import java.util.Scanner;
 public class NokiaVersionOne{
 	public static void main(String [] args){
 
-	menu();
+	power();
 }
+     // here is the method to power off
+    public static void powerOff(){
+    System.out.print("""
+              ----------------------
+              | GOODBYE FROM NOKIA |
+              |        👋️          | 
+              |       3310         |
+              |                    |
+              |  Have a nice day!  |                 
+              ----------------------    
+     """);
+    }
+    
+    //method for messages
+    public static void messages(){
+    System.out.print("""
+            
+    *********************Messages************************
+                1. Write messages
+                2. Inbox
+                3. Outbox
+                4. Picture messages
+                5. Templates
+                6. Smileys
+                7. Message settings
+                8. Info service
+                9. Voice mailbox number
+                10.Service command editor
+              Select one of the options above
+     """);
+    }
+
+
+    // here is the method used for power
+    public static void power(){
+    Scanner input = new Scanner(System.in);
+    System.out.print("""
+
+             ************************
+             * WELCOME FROM NOKIA 🪫️*
+             *          🤝️          *
+             *                      * 
+             *         3310         *
+             *                      *
+             *  LONG LASTING PHONE  *
+             *                      *
+             *  Press 00 for menu   *
+             ************************                       
+    """);
+
+    int displayMenu = input.nextInt();
+    if (displayMenu == 00){
+    }
+    menu();
+    }
+
+
+
+ // here is the main menu method     
 	public static void menu(){
 
 	Scanner input = new Scanner(System.in);
@@ -27,6 +86,7 @@ public class NokiaVersionOne{
 	            11. Clock
 	            12. Profiles
 	            13. SIM services
+               🔘️ Enter 14 to power off the phone
 
 	Please select an option from 1 - 13 above.
 	""");
@@ -34,7 +94,9 @@ public class NokiaVersionOne{
 	int mainMenu = input.nextInt();
 
 	switch(mainMenu){
-
+    
+    case 14 -> powerOff();
+    case 0 -> menu();
 	case 1 -> {
 
     System.out.print( """
@@ -50,10 +112,12 @@ public class NokiaVersionOne{
 	            9. Speed dials
 	            10. Voice tags
 	            
-	Please select option 8 for more options.
+	Select any of the options above or
+    Press 0 to go back.
 	""");
     int options = input.nextInt();
     switch(options){
+    case 0 -> menu();
       case 1 -> System.out.println("Search");
         case 2 -> System.out.println("Service Nos.");
           case 3 -> System.out.println("Add name");
@@ -63,13 +127,36 @@ public class NokiaVersionOne{
                   case 7 -> System.out.println("Send b'card'");
                     case 9 -> System.out.println("Speed dials");
                       case 10 -> System.out.println("Voice tags");
-                        case 8 -> System.out.print( """
+                        case 8 -> { System.out.print( """
     **********************Options************************
     
                 1. Type of view
-                2. Memory status   
+                2. Memory status  
+    Select from the options above or enter 0 to go back.  
     """);
-    default -> System.out.println("Please select the right option");
+  
+    int typeOfView = input.nextInt();
+    switch(typeOfView){
+    // opptions
+
+    case 0 -> menu();
+      case 1 -> {System.out.println("Type of view. Enter 0 to go return to main menu");
+        
+        int back = input.nextInt();
+        if(back == 0){
+            menu();
+            }
+        
+        }
+        case 2 -> {System.out.println("Memory status. Enter 0 to return to main menu");
+        int back = input.nextInt();
+        if(back == 0){
+            menu();
+            }
+            }
+            
+    }
+    }
     }
     }
 
@@ -91,6 +178,7 @@ public class NokiaVersionOne{
     """);
     int messageSettings = input.nextInt();
     switch(messageSettings){
+    case 0 -> menu();
     case 1 -> System.out.println("Write message");
     case 2 -> System.out.println("Inbox");
     case 3 -> System.out.println("Outbox");
@@ -105,23 +193,42 @@ public class NokiaVersionOne{
                 1. Set 1
                 2. Common 3
     
-    Select option 1 or 2
+    Select option 1 or 2 or enter 0 to go back to main menu
     """);
     int setCommon = input.nextInt();
     switch(setCommon){
-    case 1 -> System.out.print("""
+    case 0 -> menu();
+    case 1 -> {
+    System.out.print("""
    **********************Set 1****************************
                 1. Message centre number
                 2. Messages sent as
                 3. Message validity
+     Select from the above options or enter the number 0 to go back
     """);
-    case 2 -> 
+    int set = input.nextInt();
+    if(set == 1){
+    System.out.print("Message centre number. Please enter 0 to go back"); 
+    int back = input.nextInt();
+    if(back == 0){
+    menu();
+    }  
+    }else if (set == 2){
+    System.out.print("Message sent as");    
+    }else if(set == 3){
+    System.out.print("Message validity");    
+    }else if(set == 0){
+    menu();    
+    }    
+    }
+    case 2 -> {
     System.out.print("""
     ***********************Common3************************
                 1. Delivery reports
                 2. Reply via same centre
                 3. Character support
-    """);
+    Select from the options above or enter to return to main menu    
+    """);}
     }
     
 
@@ -132,10 +239,28 @@ public class NokiaVersionOne{
     }
 
     case 3 -> 
+    {
     System.out.print("""
     
-    ************************Chat**************************
+             ************************
+             * CHATTING WITH BABE   *
+             *                      *
+             *    HI, HOW ARE U     * 
+             *    DOING ❤️          *
+             *                      *
+             *                      *
+             *                      *
+             *                      *
+             ************************         
+
+
+    Enter 0 to go navigate to the main menu
     """);
+    int back = input.nextInt();
+      if (back == 0)
+          {menu();
+      }
+    }
 
     case 4 -> {
     System.out.print("""
@@ -151,6 +276,7 @@ public class NokiaVersionOne{
     """);
     int showCallDuration = input.nextInt();
     switch(showCallDuration){
+     case 0 -> menu();
       case 1 -> System.out.println("Missed calls");
         case 2 -> System.out.println("Write message");
           case 3 -> System.out.println("Write message");
@@ -196,7 +322,9 @@ public class NokiaVersionOne{
     """);
         int tonesOptions = input.nextInt();
         //cases for Tones in menu 5
+       
         switch(tonesOptions){
+        case 0 -> menu();
           case 1 -> System.out.println("Ringing Tones");
             case 2 -> System.out.println("Ringing volume");
               case 3 -> System.out.println("Incoming call alert");
@@ -223,6 +351,7 @@ public class NokiaVersionOne{
     int callSettings = input.nextInt();
     
     switch(callSettings){
+    case 0 -> menu();
     case 1 -> 
     {
         System.out.print("""
@@ -239,6 +368,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(callSettingsOption)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Automatic redial");
             case 2 -> System.out.println("Speed dialing");
               case 3 -> System.out.println("Call waiting options");
@@ -263,11 +393,12 @@ public class NokiaVersionOne{
       //case for phone setting option
         switch(phoneSettingsOption)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Language");
             case 2 -> System.out.println("cell info display");
               case 3 -> System.out.println("Welcome note");
-                case 4 -> System.out.println("Network selection);
-                  case 5 -> System.out.println("Lights);
+                case 4 -> System.out.println("Network selection");
+                  case 5 -> System.out.println("Lights");
                     case 6 -> System.out.println("Confirm SIM service actions");
         }
     }
@@ -286,6 +417,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(securitySettingsOption)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Pin code request");
             case 2 -> System.out.println("Call barring service");
               case 3 -> System.out.println("Fix dialing");
@@ -317,6 +449,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(callDivert)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Call Divert");
             
         }
@@ -325,12 +458,19 @@ public class NokiaVersionOne{
 
     case 8 ->
     { 
-    System.out.print("Games");
+    System.out.print("""
+                            Games
+
+    Your games are available here you can enter 0 to go back
+    to main menu
+
+
+    """);
     int games = input.nextInt();
       //case for call setting option
         switch(games)
         {
-         case 1 -> System.out.println("Your favourite games are here");
+        case 0 -> menu();
             
         }
     }
@@ -341,8 +481,10 @@ public class NokiaVersionOne{
     
      int calculator = input.nextInt();
       //case for call setting option
+      
         switch(calculator)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Your calculator is here.");
             
         }
@@ -354,6 +496,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(reminders)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Your reminders are here. Always check");
             
         }
@@ -373,6 +516,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(clockSettingsOptions)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Alarm clock");
            case 2 -> System.out.println("Clock settings");
              case 3 -> System.out.println("Date setting");
@@ -392,6 +536,7 @@ public class NokiaVersionOne{
       //case for call setting option
         switch(profiles)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("Your profile is available right here");
             
         }
@@ -404,6 +549,7 @@ public class NokiaVersionOne{
       //case for customer service 
         switch(simServices)
         {
+        case 0 -> menu();
          case 1 -> System.out.println("You can contact customer's service on 08134982384");
             
         }
